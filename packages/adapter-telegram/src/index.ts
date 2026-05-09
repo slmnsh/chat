@@ -1578,7 +1578,9 @@ export class TelegramAdapter
     return "MarkdownV2";
   }
 
-  protected toTelegramReaction(emoji: EmojiValue | string): TelegramReactionType {
+  protected toTelegramReaction(
+    emoji: EmojiValue | string
+  ): TelegramReactionType {
     if (typeof emoji !== "string") {
       return {
         type: "emoji",

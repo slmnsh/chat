@@ -341,7 +341,9 @@ export class DiscordAdapter implements Adapter<DiscordThreadId, unknown> {
   /**
    * Create a JSON response for Discord interactions.
    */
-  protected respondToInteraction(response: DiscordInteractionResponse): Response {
+  protected respondToInteraction(
+    response: DiscordInteractionResponse
+  ): Response {
     return Response.json(response);
   }
 
