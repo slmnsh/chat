@@ -2795,3 +2795,14 @@ describe("fetchSubject", () => {
     expect(result).toBeNull();
   });
 });
+
+describe("subclass extensibility", () => {
+  it("exposes protected members and methods to subclasses", () => {
+    class TestSubclass extends GitHubAdapter {
+      checkAccess() {
+        return [this.logger, this.formatConverter, this.verifySignature] as const;
+      }
+    }
+    expect(TestSubclass.prototype.checkAccess).toBeInstanceOf(Function);
+  });
+});

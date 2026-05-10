@@ -1234,3 +1234,14 @@ describe("TeamsAdapter", () => {
     });
   });
 });
+
+describe("subclass extensibility", () => {
+  it("exposes protected members and methods to subclasses", () => {
+    class TestSubclass extends TeamsAdapter {
+      checkAccess() {
+        return [this.logger, this.formatConverter, this.handleMessageActivity] as const;
+      }
+    }
+    expect(TestSubclass.prototype.checkAccess).toBeInstanceOf(Function);
+  });
+});

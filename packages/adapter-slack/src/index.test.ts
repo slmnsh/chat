@@ -7826,3 +7826,14 @@ describe("link unfurl enrichment", () => {
     expect(chatInstance.processMessage).not.toHaveBeenCalled();
   });
 });
+
+describe("subclass extensibility", () => {
+  it("exposes protected members and methods to subclasses", () => {
+    class TestSubclass extends SlackAdapter {
+      checkAccess() {
+        return [this.logger, this.formatConverter, this.verifySignature] as const;
+      }
+    }
+    expect(TestSubclass.prototype.checkAccess).toBeInstanceOf(Function);
+  });
+});
