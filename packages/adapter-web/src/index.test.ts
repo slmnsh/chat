@@ -460,7 +460,11 @@ describe("subclass extensibility", () => {
   it("exposes protected members and methods to subclasses", () => {
     class TestSubclass extends WebAdapter {
       checkAccess() {
-        return [this.logger, this.formatConverter, this.buildMessageFromUI] as const;
+        return [
+          this.logger,
+          this.formatConverter,
+          this.buildMessageFromUI,
+        ] as const;
       }
     }
     expect(TestSubclass.prototype.checkAccess).toBeInstanceOf(Function);

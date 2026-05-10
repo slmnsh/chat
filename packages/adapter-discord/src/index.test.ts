@@ -4380,7 +4380,11 @@ describe("subclass extensibility", () => {
   it("exposes protected members and methods to subclasses", () => {
     class TestSubclass extends DiscordAdapter {
       checkAccess() {
-        return [this.logger, this.formatConverter, this.verifySignature] as const;
+        return [
+          this.logger,
+          this.formatConverter,
+          this.verifySignature,
+        ] as const;
       }
     }
     expect(TestSubclass.prototype.checkAccess).toBeInstanceOf(Function);
